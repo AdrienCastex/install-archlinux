@@ -12,5 +12,5 @@ Just run:
 
 `bash scripts/config-save.sh` => save the updatable scripts (copy the files/folders from the current system into this repository)
 
-`bash install-software.sh` => install all packages and setup the env [AS USER]; is run by `init.sh`
+`bash scripts/install-software.sh` => install all packages and setup the env [AS USER]; already run by `init.sh`
 

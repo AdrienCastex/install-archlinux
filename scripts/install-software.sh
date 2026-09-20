@@ -69,7 +69,7 @@ sudo snap connect nordvpn:network-manager
 # Install env
 SCRIPT_DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 cd "$SCRIPT_DIR"
-bash ./scripts/config-install.sh
+bash ./config-install.sh
 
 # Install conditional packages
 if [ yes_no "Install vscode? " ] ; then

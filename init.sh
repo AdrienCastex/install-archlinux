@@ -22,5 +22,6 @@ read -p "/!\\ Now, you must add the group 'wheel' to sudoers! The line is alread
 EDITOR=vim visudo
 
 echo "Start software installation"
-su $USERNAME -Pc "bash install-software.sh"
+SCRIPT_DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+su $USERNAME -Pc "bash ${SCRIPT_DIR}/scripts/install-software.sh"
 
