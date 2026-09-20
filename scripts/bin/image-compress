@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ ! "$1" ]] ; then
+	echo "Usage : $0 <src-image> <dst-image>"
+	exit 80
+fi
+
+convert -quality 80 "$1" "$2"
+

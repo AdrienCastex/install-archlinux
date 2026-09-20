@@ -1,0 +1,12 @@
+#!/bin/bash
+
+PROJECT_PATH="$1"
+
+if [[ ! "$PROJECT_PATH" ]] ; then
+	echo "Usage $0 <project-path>";
+	exit 80
+fi
+
+EDITOR=$(unity-editor-path-6.0)
+
+$EDITOR -projectpath "$PROJECT_PATH" -acceptSoftwareTermsForThisRunOnly -useHub -hubIPC -cloudEnvironment production -licensingIpc LicenseClient-$USER -hubSessionId fbb275af-998d-4bbf-9a69-60aa98c6edc7 -accessToken ZEeCh7rfkThLmUhjIWaCs17boQybVWd97QxDBZB09k8008f & 

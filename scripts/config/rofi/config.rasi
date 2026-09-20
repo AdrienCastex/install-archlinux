@@ -1,0 +1,7 @@
+
+configuration {
+	combi-modi: "window,drun,script:/home/human/.config/rofi/list.sh";
+	modi: "combi";
+}
+
+

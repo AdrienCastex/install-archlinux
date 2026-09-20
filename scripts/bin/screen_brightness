@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $# = 1 ]] ; then
+	echo $1 > /sys/class/backlight/intel_backlight/brightness
+else
+	echo "Usage: $0 <brightness>"
+	echo "   ex: $0 50"
+fi
+

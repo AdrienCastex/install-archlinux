@@ -1,0 +1,9 @@
+#!/bin/bash
+
+EDITORS=(~/Unity/Hub/Editor/6000.*)
+EDITOR="${EDITORS[0]}"
+
+if [[ "$EDITOR" ]] ; then
+	echo "${EDITOR}/Editor/Unity"
+fi
+
