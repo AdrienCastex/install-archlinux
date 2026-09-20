@@ -5,7 +5,15 @@ if [[ $(whoami) != "root" ]] ; then
 	exit 80
 fi
 
+echo "====================================="
+echo Install base packages
+echo "====================================="
+
 pacman -S vim sudo
+
+echo "====================================="
+echo Create first user
+echo "====================================="
 
 # Create human user
 read -p "User name to create (human): " USERNAME
@@ -21,7 +29,11 @@ read -p "/!\\ Now, you must add the group 'wheel' to sudoers! The line is alread
 
 EDITOR=vim visudo
 
-echo "Start software installation"
+echo "====================================="
+echo "==== Start software installation ===="
+echo "====================================="
 SCRIPT_DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+
+echo "Changing user from $USER to $USERNAME to run scripts/install-software.sh"
 su $USERNAME -Pc "bash ${SCRIPT_DIR}/scripts/install-software.sh"
 

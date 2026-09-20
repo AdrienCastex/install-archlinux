@@ -15,10 +15,14 @@ function yes_no {
     done
 }
 
-# Update
+echo "====================================="
+echo Update
+echo "====================================="
 sudo pacman -Syu
 
-# Install packages
+echo "====================================="
+echo Install packages
+echo "====================================="
 sudo pacman -S --needed base-devel
 sudo pacman -S vim wget git xorg-xinit polybar rofi kitty less i3wm i3status bluez bluez-utils man xorg-xrandr android-file-transfer imagemagick openssh ttf-nerd-fonts-symbols
 
@@ -26,13 +30,17 @@ systemctl enable --now bluetooth
 
 git config --global core.editor "vim"
 
-# Install yay
+echo "====================================="
+echo Install yay
+echo "====================================="
 cd /tmp
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-# Install mega-cmd
+echo "====================================="
+echo "Install mega-cmd"
+echo "====================================="
 cd /tmp
 wget https://mega.nz/linux/repo/Arch_Extra/x86_64/megacmd-x86_64.pkg.tar.zst
 sudo pacman -U "megacmd-x86_64.pkg.tar.zst"
@@ -44,14 +52,20 @@ megaUsername=
 megaPassword=
 mega-sync ~/mega /
 
-# Install audio
+echo "====================================="
+echo Install audio
+echo "====================================="
 sudo pacman -S pipewire pipewire-audio pipewire-pulse pipewire-alsa wireplumber wiremix
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
-# Install firefox
+echo "====================================="
+echo Install firefox
+echo "====================================="
 sudo pacman -Sy firefox
 
-# Install nordvpn
+echo "====================================="
+echo Install nordvpn
+echo "====================================="
 systemctl enable --now snapd
 sudo snap install nordvpn
 
@@ -66,12 +80,16 @@ sudo snap connect nordvpn:firewall-control
 sudo snap connect nordvpn:login-session-observe
 sudo snap connect nordvpn:network-manager
 
-# Install env
+echo "====================================="
+echo Install common config
+echo "====================================="
 SCRIPT_DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 cd "$SCRIPT_DIR"
 bash ./config-install.sh
 
-# Install conditional packages
+echo "====================================="
+echo Install some additional packages?
+echo "====================================="
 if [ yes_no "Install vscode? " ] ; then
 	yay -S visual-studio-code-bin
 fi
