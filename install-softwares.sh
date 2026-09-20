@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $(whoami) == "root" ]] ; then
+	echo "Don't start this script as ROOT user!!!!"
+	exit 80
+fi
+
 function yes_no {
     while true; do
         read -p "$* [y/n]: " yn
@@ -12,11 +17,6 @@ function yes_no {
 
 # Update
 sudo pacman -Syu
-
-# Create human user
-# useradd -m -G wheel human
-# passwd human
-# EDITOR=vim visudo
 
 # Install packages
 sudo pacman -S --needed base-devel
@@ -36,13 +36,13 @@ makepkg -si
 cd /tmp
 wget https://mega.nz/linux/repo/Arch_Extra/x86_64/megacmd-x86_64.pkg.tar.zst
 sudo pacman -U "megacmd-x86_64.pkg.tar.zst"
-mkdir /home/human/mega
+mkdir ~/mega
 read -p "MEGA username:" megaUsername
 read -p "MEGA password:" megaPassword
 mega-login "$megaUsername" "$megaPassword"
 megaUsername=
 megaPassword=
-mega-sync /home/human/mega /
+mega-sync ~/mega /
 
 # Install audio
 sudo pacman -S pipewire pipewire-audio pipewire-pulse pipewire-alsa wireplumber wiremix
@@ -56,7 +56,7 @@ systemctl enable --now snapd
 sudo snap install nordvpn
 
 sudo groupadd nordvpn
-sudo usermod -aG nordvpn human
+sudo usermod -aG nordvpn $USER
 
 sudo snap connect nordvpn:system-observe
 sudo snap connect nordvpn:hardware-observe

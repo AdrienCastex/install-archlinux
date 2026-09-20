@@ -1,6 +1,7 @@
 Common personnal ArchLinux env install
 
-`bash install-software.sh` => install all packages and setup the env
+1. `bash init.sh` => init system [AS ROOT]
+2. `bash install-software.sh` => install all packages and setup the env [AS USER]
 
 `bash scripts/config-install.sh` => install the updatable scripts (i3 config, custom scripts, ...)
 
