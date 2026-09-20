@@ -20,7 +20,7 @@ sudo pacman -Syu
 
 # Install packages
 sudo pacman -S --needed base-devel
-sudo pacman -S vim wget git xorg-xinit polybar rofi kitty less i3wm i3status bluez bluez-utils man xorg-xrandr android-file-transfer imagemagick
+sudo pacman -S vim wget git xorg-xinit polybar rofi kitty less i3wm i3status bluez bluez-utils man xorg-xrandr android-file-transfer imagemagick openssh
 
 systemctl enable --now bluetooth
 
