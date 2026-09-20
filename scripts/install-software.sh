@@ -23,8 +23,12 @@ sudo pacman -Syu
 echo "====================================="
 echo Install packages
 echo "====================================="
+
+INSTALL_i3="xorg-xinit polybar rofi kitty i3wm i3status xorg-xrandr ttf-nerd-fonts-symbols"
+INSTALL_bluetooth="bluez bluez-utils"
+
 sudo pacman -S --needed base-devel
-sudo pacman -S vim wget git xorg-xinit polybar rofi kitty less i3wm i3status bluez bluez-utils man xorg-xrandr android-file-transfer imagemagick openssh ttf-nerd-fonts-symbols
+sudo pacman -S vim wget git less man android-file-transfer imagemagick openssh $INSTALL_i3 $INSTALL_bluetooth
 
 systemctl enable --now bluetooth
 
@@ -90,12 +94,17 @@ bash ./config-install.sh
 echo "====================================="
 echo Install some additional packages?
 echo "====================================="
-if [ yes_no "Install vscode? " ] ; then
+if [ yes_no "Install Visual Studio Code? " ] ; then
 	yay -S visual-studio-code-bin
 fi
-if [ yes_no "Install unity? " ] ; then
+
+if [ yes_no "Install Unity? " ] ; then
 	yay -S unityhub dotnet-sdk mono mono-msbuild mono-msbuild-sdkresolver
 	sudo pacman -S aspnet-runtime dotnet-runtime dotnet-sdk mono-msbuild mono-msbuild-sdkresolver mono
 	echo "Extensions à installer dans vscode : C#, Debugger for Unity, Unity Tools, vscode-solution-explorer"
+fi
+
+if [ yes_no "Install Libre Office? " ] ; then
+	sudo pacman -S libreoffice-still
 fi
 
