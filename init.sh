@@ -25,7 +25,7 @@ fi
 useradd -m -G wheel $USERNAME
 passwd $USERNAME
 
-read -p "/!\\ Now, you must add the group 'wheel' to sudoers! The line is already there, just uncomment it. (press any key to continue)"
+read -p "/!\\ Now, you must add the group 'wheel' to sudoers! The line is already there, just uncomment it. Also, add to secured_path '...:/home/$USERNAME/.bin:/var/lib/snapd/snap/bin' (press any key to continue)"
 
 EDITOR=vim visudo
 
