@@ -34,6 +34,8 @@ systemctl enable --now bluetooth
 
 git config --global core.editor "vim"
 
+localectl set-x11-keymap fr
+
 echo "====================================="
 echo Install yay
 echo "====================================="
