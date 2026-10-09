@@ -96,17 +96,43 @@ bash ./config-install.sh
 echo "====================================="
 echo Install some additional packages?
 echo "====================================="
+YAY=""
+PACMAN=""
+END_MSG=""
+
 if [ yes_no "Install Visual Studio Code? " ] ; then
-	yay -S visual-studio-code-bin
+	YAY="$YAY visual-studio-code-bin"
 fi
 
 if [ yes_no "Install Unity? " ] ; then
-	yay -S unityhub dotnet-sdk mono mono-msbuild mono-msbuild-sdkresolver
-	sudo pacman -S aspnet-runtime dotnet-runtime dotnet-sdk mono-msbuild mono-msbuild-sdkresolver mono
-	echo "Extensions à installer dans vscode : C#, Debugger for Unity, Unity Tools, vscode-solution-explorer"
+	YAY="$YAY unityhub dotnet-sdk mono mono-msbuild mono-msbuild-sdkresolver"
+	PACMAN="$PACMAN aspnet-runtime dotnet-runtime dotnet-sdk mono-msbuild mono-msbuild-sdkresolver mono"
+	END_MSG="$EN_MSG \nExtensions à installer dans vscode : C#, Debugger for Unity, Unity Tools, vscode-solution-explorer"
 fi
 
 if [ yes_no "Install Libre Office? " ] ; then
-	sudo pacman -S libreoffice-still
+	PACMAN="$PACMAN libreoffice-still"
+fi
+
+if [ yes_no "Install image viewer (sxiv)? " ] ; then
+	PACMAN="$PACMAN sxiv"
+fi
+
+if [ yes_no "Install Gimp? " ] ; then
+	PACMAN="$PACMAN gimp"
+fi
+
+if [ yes_no "Install Inkscape? " ] ; then
+	YAY="$YAY inkscape"
+fi
+
+if [[ "$PACMAN" ]] ; then
+	sudo pacman -S $PACMAN
+fi
+if [[ "$YAY" ]] ; then
+	yay -S $YAY
+fi
+if [[ "$END_MSG" ]] ; then
+	echo -e "$END_MSG"
 fi
 
