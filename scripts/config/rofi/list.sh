@@ -4,7 +4,8 @@ if [[ "$#" -eq "0" ]] ; then
 	ls /home/human/.bin/
 	echo poweroff
 	echo reboot
-	echo veille
+	echo veille_hibernate
+	echo veille_suspend
 	echo exit
 else
 	case "$1" in
@@ -17,11 +18,14 @@ else
 		exit)
 			i3-msg exit &
 			;;
-		veille)
-			systemctl hibernate -i &
+		veille_suspend)
+			/home/$USER/.bin/power-suspend > /dev/null 2>&1 &
+			;;
+		veille_hibernate)
+			/home/$USER/.bin/power-hibernate > /dev/null 2>&1 &
 			;;
 		*)
-			/home/human/.bin/$@ > /dev/null 2>&1 &
+			/home/$USER/.bin/$@ > /dev/null 2>&1 &
 			;;
 	esac
 fi
