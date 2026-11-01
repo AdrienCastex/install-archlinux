@@ -110,6 +110,10 @@ if [ yes_no "Install Unity? " ] ; then
 	END_MSG="$EN_MSG \nExtensions à installer dans vscode : C#, Debugger for Unity, Unity Tools, vscode-solution-explorer"
 fi
 
+if [ yes_no "Install Node.js? " ] ; then
+	PACMAN="$PACMAN nodejs npm"
+fi
+
 if [ yes_no "Install Libre Office? " ] ; then
 	PACMAN="$PACMAN libreoffice-still"
 fi
